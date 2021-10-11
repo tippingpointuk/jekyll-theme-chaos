@@ -4,7 +4,12 @@
 $(document).ready(function(){
   console.log("ready")
 })
+{% if site.actions %}
 {% assign actions = site.actions | sort: "start_date" %}
+{% else %}
+{% assign actions = site.actions %}
+{% endif %}
+
 var actionsData = {
   "events":[
   {% for a in actions %}
