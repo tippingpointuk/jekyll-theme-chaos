@@ -1,0 +1,21 @@
+@media print
+{
+    body {
+        font-size: 12pt;
+    }
+    .Chaos-Header, .Chaos-Footer, .Chaos-Big-Picture, .Chaos-Half-Picture{
+        display: none;
+    }
+    .Chaos-Wrapper-Wide, .Chaos-Wrapper-Narrow {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: none;
+        
+    }
+    .Chaos-Section {
+        padding: 3em 0;
+    }
+    body {
+        display: block;
+    }
+}

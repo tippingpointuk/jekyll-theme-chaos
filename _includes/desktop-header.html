@@ -1,0 +1,21 @@
+<nav class="desktop">
+    <div class="edgePadding"></div>
+    {% include site-title.html %}
+    <div class="centralPadding"></div>
+    {% for link in site.menus.header %}
+      <a class="page-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+      {% unless loop.last %}
+          <div class="withinPadding"></div>
+      {% endunless %}
+    {% endfor %}
+
+    <div class="social-links-padding"></div>
+    {% include social-links.html %}
+
+    {% if site.donate %}
+        <div class="withinPadding"></div>
+        <a class="Chaos-Button" href="{{ site.donate | liquify | relative_url}}">Donate</a>
+    {% endif %}
+
+    <div class="edgePadding"></div>
+</nav>

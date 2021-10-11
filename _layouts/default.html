@@ -1,1 +1,114 @@
-{{ content }}
+{% capture odd_classes %}odd {% if page.invert == "odd" %}invert{% endif %}{% endcapture %}
+{% capture even_classes %}even {% if page.invert == "even" %}invert{% endif %}{% endcapture %}
+{% capture blocks %}
+{% for block in page.blocks %}
+<div
+  {% if block.id %}id="{{ block.id }}"{% endif %}
+  class="Chaos-Block-2 {% cycle odd_classes, even_classes %} {% if block.background_image.size > 1 %}background-image{% endif %} {% if block.invert %}invert{% endif %}"  {% if block.background_image.size > 1 %}style="background-image: url('{{ block.background_image }}')"{% endif %}>
+  {% include block2.html block=block %}
+</div>
+{% endfor %}
+{% endcapture %}
+<!DOCTYPE html>
+{% include head.html %}
+<body>
+    {% include header.html %}
+    <main class="Chaos-Main {% if  page.background_image.size > 0 %}background-image{% endif %}" {% if  page.background_image.size > 0 %}style="background-image:url('{{page.background_image | relative_url}}')"{% endif %}>
+
+        {% if page.top_image.size > 0  %}
+            {% if layout.image_big %}
+                <div class="Chaos-Section Chaos-Big-Picture" style="background-image:url('{{page.top_image | relative_url}}')"></div>
+            {% else %}
+                <div class="Chaos-Section Chaos-Half-Picture" style="background-image:url('{{page.top_image | relative_url}}')"></div>
+            {% endif %}
+            {% if page.jump %}
+            <div class="Chaos-Near-Bottom">
+                <div class="Chaos-Flex-Line">
+                    <a href="#{{ page.jump.target | slugify }}"><span class="Chaos-Button">{{ page.jump.text }}</span></a>
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
+
+        {% if page.header %}
+        <div
+        class="Chaos-Big-Header  {% if page.header.border_bottom.reflect %}shift{% endif %} {% if page.header.full %}full{% endif %}"
+        style="background-image: url('{{ page.header.image.link }}');background-position-x: {{ page.header.image.location }};"
+        >
+          <div class="Chaos-Section">
+            <div class="Chaos-Wrapper-Wide">
+              {{ page.header.text | liquify | markdownify }}
+              {% for button in page.header.buttons %}
+                {% if forloop.first %}<div class="Chaos-Flex-Line">{% endif %}
+                  <a href="{{ button.target | liquify  }}"><span class="Chaos-Button">{{button.text | liquify}}</span></a>
+                {% if forloop.last  %}</div>{% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% if page.header.border_bottom.image %}
+            <div class="border-bottom-container">
+              <div class="border-bottom" style="background-image:url('{{ page.header.border_bottom.image | relative_url }}')"></div>
+              {% if page.header.border_bottom.reflect %}
+              <div class="border-bottom reflect" style="background-image:url('{{ page.header.border_bottom.image | relative_url }}')"></div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if page.contents_links %}
+            <div class="Chaos-Section Chaos-Contents">
+                <div class="Chaos-Wrapper-Wide">
+                    <h2>{{ page.title }}</h2>
+                    <ol>
+                        {% for link in page.contents_links %}
+                        <li><a href="#{{link.a}}">{{link.title}}</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if page.top_quote.size > 2 %}
+            <div class="Chaos-Section Chaos-PullQuote">
+                <div class="Chaos-Wrapper-Wide">
+                    <h1>{{ page.top_quote | liquify }}</h1>
+                </div>
+            </div>
+        {% endif %}
+
+        {% unless page.blocks_after %}{{blocks}}{% endunless %}
+
+
+        {{ content }}
+
+        {% if page.blocks_after %}{{blocks}}{% endif %}
+
+        {% if page.end_quote %}
+        <div class="Chaos-Section Chaos-PullQuote">
+            <div class="Chaos-Wrapper-Wide">
+                <h1>{{ page.end_quote  | liquify }}</h1>
+                <div class="Chaos-Flex-Line">
+                    {% if site.join_us %}
+                        <a href="{{ site.join_us  | relative_url}}"><span class="Chaos-Button">Join Us</span></a>
+                    {% endif %}
+                    {% if site.donate %}
+                        <a href="{{ site.donate  | relative_url}}"><span class="Chaos-Button">Donate</span></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </main>
+
+    {% include footer.html %}
+</body>
+<script src={{ "/assets/js.js"  | relative_url  }}></script>
+{% if page.hide_nav %}
+<script type="text/javascript">
+  document.onload = function(e){
+    hasScrolled();
+  };
+</script>
+{% endif %}
+</html>

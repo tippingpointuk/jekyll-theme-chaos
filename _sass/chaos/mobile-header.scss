@@ -1,0 +1,228 @@
+.mobile {
+    background-color: $background-color;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-items: space-between;
+    align-items: center;
+    min-height: $action-bar-height-mobile;
+    height: 100%;
+
+    @media screen and (min-width: $on-small) {
+        min-height: $action-bar-height;
+    }
+
+    .nav-trigger { display: none; }
+
+    .site-title {
+        order: 2
+    }
+
+    > .Chaos-Button {
+        position: relative;
+        top: -1px;
+        order: 4;
+        margin-right: 16px;
+        font-size: 15px;
+        line-height: 1;
+        height: 42px;
+        padding: 13px 16px;
+        box-sizing: border-box;
+        display: none;
+
+        @media screen and (min-width: $on-small) {
+            & { display: inline-block;}
+        }
+    }
+
+    .menu-icon {
+        line-height: 0;
+        width: 18px;
+        height: 15px;
+        position: relative;
+        left: 0;
+        top:0;
+        transition: 0.3s;
+        padding: 14px;
+        border-radius: 50%;
+        background-color: $accent-color;
+
+        &:hover {
+            background-color: $accent-color-dark;
+        }
+
+        > svg path { fill: $accent-text-color; }
+    }
+
+    .close-menu, .open-menu {
+        width: 46px;
+        height: 46px;
+        align-self: center;
+        cursor: pointer;
+        order: 4
+    }
+
+    .centralPadding { order: 3}
+
+    .edgePadding {
+        order: 6;
+        max-width: 16px;
+
+        &:first-of-type { order: 1; }
+    }
+
+    input { order: 5}
+
+    .menu-icon { display: block; }
+
+    .desktop-nav { display: none; }
+
+    .social-links {
+        margin: 5px 20px 20px 0;
+        text-align: right;
+        align-items: center;
+
+        svg {
+            width: 42px;
+            height: 42px;
+            transition: 0.2s;
+        }
+    }
+
+    .close-menu {
+        display: none;
+        z-index: 2;
+        position: fixed;
+        top: 6px;
+        right: 16px;
+
+        @media screen and (min-width: $on-small) {
+            top: 14px;
+        }
+
+        .menu-icon {
+            width: 18px;
+            height: 18px;
+            padding: 12px 14px;
+        }
+    }
+
+    input ~ .mobile-drawer-container {
+        right: -100%;
+
+        @media screen and (min-width: $on-medium) {
+            & { display: none; }
+        }
+    }
+
+    input:checked ~ .close-menu { display: block; }
+
+    .mobile-drawer-container {
+        transition: right 0.3s ease-in-out;
+        box-shadow: -1px 0 10px $shadow-color;
+        position: fixed;
+        display: flex;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        min-width: 240px;
+        max-width: 400px;
+        width:85%;
+
+        @media screen and (max-width: $on-tiny) {
+            & { min-width: unset; width: 100%;}
+        }
+
+        .mobile-drawer
+        {
+            background-color: $brand-color;
+
+            width: 100%;
+            position: relative;
+            padding-top: $action-bar-height-mobile;
+
+            @media screen and (min-width: $on-small) {
+                padding-top: $action-bar-height;
+            }
+
+
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: stretch;
+            align-content: space-around;
+
+            > a {
+                align-self: center;
+            }
+
+            .mobile-nav {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: stretch;
+                align-content: space-around;
+
+                .page-link {
+                    border-top: 1px solid $text-color;
+                    color: $brand-text-color;
+                    line-height: $base-line-height;
+                    font-family: $header-font-stack;
+                    font-size: $base-font-size * 1.5;
+
+                    &:hover {
+                        text-decoration: none;
+                        border-bottom: 1px solid $accent-color;
+                        color: $background-color;
+                    }
+                    padding: 0.5rem;
+                    padding-left: 1.5rem;
+                }
+
+                .page-link:hover + .page-link {
+                    border-top: none;
+                }
+
+            }
+        }
+    }
+
+    input:checked ~ .mobile-drawer-container {
+        right: 0;
+
+        @media screen and (min-width: $on-medium) {
+            & { display: none;}
+        }
+    }
+
+    .scrim {
+        position: fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom: 0;
+        background-color: black;
+        opacity: 0;
+        z-index: 0;
+        cursor: pointer;
+        display: block;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events:none;
+    }
+
+    input:checked ~ .scrim {
+        pointer-events:initial;
+        opacity: 0.5;
+    }
+
+    @media screen and (min-width: $on-medium) {
+        .open-menu { display: none; }
+    }
+
+    @media screen and (min-width: $on-medium) {
+        & { display: none; }
+    }
+}

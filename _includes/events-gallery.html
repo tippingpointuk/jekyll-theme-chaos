@@ -1,0 +1,91 @@
+<div markdown="0">
+  {% assign limit = include.limit | default: events.size %}
+  {% assign date_field = include.date_field | default: 'date' %}
+  {% assign last_month = nil %}
+{% for post in events limit:limit  %}
+    {% assign this_month = post[date_field] | date: "%B" %}
+    {% assign previous_index = forloop.index0 | minus: 1 %}
+
+    {% capture url %}{{ post.url | relative_url }}{% endcapture %}
+
+    {% if forloop.first %}
+    <!-- Not including month and year at the top -->
+    <!-- <h1 id="{{ this_year }}-ref">{{this_year}}</h2> -->
+    <div class="Chaos-Flex-Line">
+      <h2>{{ this_month }}</h2>
+    </div>
+    <div class="Chaos-Blog-List Chaos-Events-Gallery">
+    {% elsif this_month !=  last_month%}
+      </div>
+      <div class="Chaos-Flex-Line">
+        <h2>{{ this_month }}</h2>
+      </div>
+      <div class="Chaos-Blog-List Chaos-Events-Gallery">
+    {% endif %}
+
+    <div
+    class="Chaos-Blog-Item {% if forloop.first %}first{%endif %}" id="{{ post_id }}-close">
+    {% if post.image.size > 0 and include.thumbnail!=true %}
+    <a href="{{ post.url | relative_url  }}"><img src="{{ post.image  | relative_url  }}" /></a>
+    {% endif %}
+        <div class="top {% if include.alternate_direction %}{% cycle '','reverse' %}{% endif %}">
+                {% if include.date!=false %}
+                <div class="date">
+                    <span class="day-number">{{ post[date_field] | date: "%e" }}</span>
+                    <span class="month">{{ post[date_field] | date: "%b" }}</span>
+                </div>
+                {% endif %}
+                {% if include.thumbnail and post.image.size > 1 %}
+                <!-- <a href="{{ url   }}" class="thumbnail"> -->
+                  <div class="thumbnail" style="background-image:url('{{ post.image  | relative_url  }}')">
+                    <!-- <a href="{{ url   }}"><img title="{{post.title}}"  src="{{ post.image  | relative_url  }}" /></a> -->
+                  </div>
+                <!-- </a> -->
+                {% endif %}
+
+                <div class="description">
+                    <div class="header-line">
+                      <h3><a href="{{ url }}">{{ post.title }}</a></h3>
+                    </div>
+                    <p><time>{{ post.start_date | date: "%l:%M %p" }}</time> to <time>{{ post.end_date | date: "%l:%M %p" }}</time></p>
+
+                    {% if post.authors %}
+                    <span>
+                        {% for a in post.authors %}
+                            {% if a.url %}<a href='{{ "/" | join: a.url | relative_url  }}'>{{ a.name }}</a>{% else %}{{a.name}}{% endif %}{% if forloop.last == false %},{% endif %}
+                        {% endfor %}
+                    </span>
+                    {%endif%}
+                    {% if include.summary %}
+                    <div class="summary" >
+                      {% if post.summary %}
+                          <p>{{ post.summary }}</p>
+                        {% elsif post.excerpt %}
+                          <p>{{ post.excerpt }}</p>
+                        {% elsif post.description %}
+                            <div class="snippet" >
+                              {{ post.description | truncatewords : 15  | liquify | markdownify }}
+                            </div>
+                        {% endif %}
+                      </div>
+                      {% endif %}
+                </div>
+            </div>
+
+            <div style="width: 100%">
+            {% if post.categories.size > 0 %}
+                <span style="float: right;">Categories:
+                {% for c in post.categories %}
+                    <a href='{{ "/categories/" | join: c | relative_url }}'>{{ c }}</a>{% if forloop.last == false %},{% endif %}
+                {% endfor %}
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    {% if this_month != last_month and last_month %}
+
+    {% endif %}
+    {% assign last_month = this_month %}
+    {% if forloop.last %}</div>{% endif %}
+{% endfor %}
+</div>

@@ -1,0 +1,68 @@
+.Chaos-Block-2 {
+  @media screen and (min-width: $content-width-wide * 1.5){
+    .Chaos-Section{
+      display: flex;
+    }
+  }
+  &.odd{
+    .Chaos-Section{
+      flex-direction: row-reverse;
+    }
+  }
+  &.background-image{
+    background: $background-color no-repeat center center;
+    background-size: cover;
+    .Chaos-Section{
+      background-color: rgba($background-color,0.8);
+    }
+    &.invert{
+        .Chaos-Section{
+          background-color: rgba($brand-color,0.8);
+        }
+    }
+  }
+  &.invert > .Chaos-Section{
+    background-color: $brand-color;
+
+    .Chaos-Accordion-Item{
+      > .top > .description > .header-line{
+        svg path,h1,h2,h3,h4,a, &::after{
+          stroke:$brand-text-color;
+          fill: $brand-text-color;
+          color: $brand-text-color;
+        }
+
+      }
+    }
+
+    .Chaos-Form{
+      label{
+        color: $brand-text-color;
+        &::after{
+          color:$brand-text-color;
+        }
+      }
+    }
+    .Chaos-Button{
+      background-color: $background-color;
+      color: $brand-color;
+    }
+    .Chaos-Wrapper{
+      > p,> h1,> h2,> h3,> h4,> h5,> h6,> a{
+        color: $brand-text-color;
+        > a{
+          color: $brand-text-color;
+        }
+      }
+    }
+  }
+  img{
+    box-shadow: $spacing-unit $spacing-unit $brand-color;
+  }
+  .Chaos-Wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // color: $brand-color;
+  }
+}

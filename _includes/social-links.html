@@ -1,0 +1,17 @@
+<div class="social-links">
+    {% if site.facebook.size > 1 %}
+    <a href="{{ site.facebook }}" title="Facebook">
+        {% include logo-facebook %}
+    </a>
+    {% endif %}
+    {% if site.twitter.size > 1 %}
+    <a href="{{ site.twitter }}" title="Twitter">
+        {% include logo-twitter %}
+    </a>
+    {% endif %}
+    {% if site.instagram.size > 1 %}
+    <a href="{{ site.instagram }}" title="Instagram">
+        {% include logo-instagram %}
+    </a>
+    {% endif %}
+</div>

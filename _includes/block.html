@@ -1,0 +1,67 @@
+{% assign type = include.block.type %}
+{% assign image = include.block.image %}
+{% assign heading = include.block.heading | liquify | markdownify | strip %}
+{% assign block_data = site.data.blocks | where: "type", type | first  %}
+{% assign blocks = block_data | map: "type" %}
+{% assign text =  include.block.text | markdownify | liquify | strip %}
+
+{% if text != '' and text%}
+  {% assign half = true %}
+{% elsif include.block.buttons[0]['text'] %}
+  {% assign half = true %}
+{% else %}
+  {% assign half = false %}
+{% endif %}
+{% if type == "header" %}
+    {% assign half = false %}
+{% endif %}
+
+{% capture buttons %}
+{% for button in include.block.buttons %}
+  {% if forloop.first %}<div class="Chaos-Flex-Line">{% endif %}
+    <a href="{{ button.target | liquify | relative_url }}"><span class="Chaos-Button">{{button.text | liquify}}</span></a>
+  {% if forloop.last  %}</div>{% endif %}
+{% endfor %}
+{% endcapture %}
+
+<div class="Chaos-Block {% if half == true %}half{% endif %} {{type}} {% if include.block.full %}full{% endif %} {% if block.border_bottom.reflect %}shift{% endif %}">
+    {% if type == 'text' or type == 'header' %}
+      <div class="Chaos-Section">
+          {% unless include.block.wide %}<div class="Chaos-Wrapper-Wide">{% endunless %}
+              {{ text }}
+              {{ buttons }}
+          {% unless include.block.wide %}</div>{% endunless %}
+      </div>
+    {% else %}
+
+      <div class="{{type}} panel {% if include.block.full %}full{% endif %} {% if half == true %}half{% endif %}"{% if image and image != '' %} style="background-image:url('{{ image | relative_url }}')"{% endif %}>
+        <div class="background" {% if include.block.heading_background == true %}style="opacity:0.5;"{% elsif type=='image' %}style="opacity:0;"{% endif %}>
+          {% if blocks contains type %}
+            {% include {{ block_data.include }}  %}
+          {% endif %}
+        </div>
+        {% if heading and heading != '' %}
+          <div class="heading" id="{{ include.block.heading | liquify| slugify | downcase }}">
+            <h1>{{ heading }}</h1>
+          </div>
+        {% endif %}
+      </div>
+
+    {% if half == true %}
+      <div class="text half">
+        <div class="content">
+          {{ text }}
+          {{ buttons }}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+  {% if block.border_bottom.image and block.border_bottom.image != '' %}
+    <div class="border-bottom-container">
+      <div class="border-bottom" style="background-image:url('{{ block.border_bottom.image | relative_url }}')"></div>
+      {% if block.border_bottom.reflect %}
+      <div class="border-bottom reflect" style="background-image:url('{{ block.border_bottom.image | relative_url }}')"></div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

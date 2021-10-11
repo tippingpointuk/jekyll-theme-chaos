@@ -2,4 +2,11 @@
 layout: default
 ---
 
-{{ content }}
+{% assign text = content | strip %}
+{% if text != '' %}
+<div class="Chaos-Section">
+    <div class="Chaos-Wrapper-Wide">
+        {{ content }}
+    </div>
+</div>
+{% endif %}

@@ -2,4 +2,15 @@
 layout: default
 ---
 
-{{ content }}
+<div class="Chaos-Section">
+    <div class="Chaos-Wrapper-Wide">
+        <h1>{{ page.title }}</h1>
+        <div class="Chaos-Flex-Line">
+          {% include share-links.html page=page %}
+        </div>
+        {% if page.image %}
+            <img src="{{ page.image  | relative_url}}" />
+        {% endif %}
+        {{ content }}
+    </div>
+</div>

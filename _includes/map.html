@@ -1,0 +1,15 @@
+{% assign lat = page.map.lat | default: site.map.lat %}
+{% assign lng = page.map.lng | default: site.map.lng %}
+{% capture params %}
+{
+  "zoom" : 17,
+  "center" : [{{ lat }}  ,{{ lng }}],
+  "divId" : "Chaos-Map",
+  "providerBasemap": "{{site.map.basemap | default: "OpenStreetMap.Mapnik"}}"
+}
+{% endcapture %}
+{% leaflet_map {{params}} %}
+      {% leaflet_marker { "latitude" : {{lat}},
+                          "longitude" : {{lng}},
+                          "popupContent" : "{{ site.title }}" } %}
+{% endleaflet_map %}

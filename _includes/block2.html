@@ -1,0 +1,22 @@
+{% if include.block.map %}
+<iframe src="/actions" class="Chaos-Map" id="map"></iframe>
+{% else %}
+<div class="Chaos-Section">
+  {% capture buttons %}
+  {% for button in include.block.buttons %}
+    {% if forloop.first %}<div class="Chaos-Flex-Line">{% endif %}
+      <a href="{{ button.target | liquify | relative_url }}"><span class="Chaos-Button">{{button.text | liquify}}</span></a>
+    {% if forloop.last  %}</div>{% endif %}
+  {% endfor %}
+  {% endcapture %}
+  <div class="Chaos-Wrapper-Wide Chaos-Wrapper">
+    {{ include.block.text | liquify | markdownify }}
+    {{ buttons }}
+  </div>
+  {% if include.block.decoration and include.block.decoration != '' %}
+  <div class="Chaos-Wrapper-Wide Chaos-Wrapper">
+    {{ include.block.decoration | liquify | markdownify }}
+  </div>
+  {% endif %}
+</div>
+{% endif %}
