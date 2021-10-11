@@ -1,0 +1,11 @@
+<div class="Chaos-Flex-Line">
+  {% for demand in include.demands %}
+    <div class="Chaos-Demand">
+      <div class="Chaos-Flex-Line"><h2>{{ demand.heading }}</h2></div>
+      <p>{{ demand.text }}</p>
+      {% if demand.button %}
+      <div class="Chaos-Flex-Line"><a href="{{ demand.button.target | liquify | relative_url }}"><span class="Chaos-Button">{{demand.button.text | liquify}}</span></a></div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

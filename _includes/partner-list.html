@@ -1,0 +1,14 @@
+<div class="Chaos-Logo-List">
+  {% for org in site.data.partners %}
+    <div class="Chaos-Logo-Item">
+      <a href="{{  org.url }}" target="_blank">
+        <img
+          class="{% if include.background == 'light' %}darken{% else %}lighten{% endif %} {% if org.invert_logo_colour %}invert{% endif %}"
+          src="{{ org.image }}"
+          alt="{{ org.title }} Logo"
+          title="{{ org.title }}"
+          >
+      </a>
+    </div>
+  {% endfor %}
+</div>

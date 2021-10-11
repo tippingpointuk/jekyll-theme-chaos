@@ -1,0 +1,14 @@
+<div markdown="0">
+  {% assign limit = include.limit | include.data.size %}
+  {% for post in include.data limit:limit  %}
+    {% if forloop.first %}
+      <div class="Chaos-Accordion">
+    {% endif %}
+
+    {% include single-accordion.html description=post.description title=post.title image=post.image share_buttons=include.share_buttons  %}
+
+    {% if forloop.last %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

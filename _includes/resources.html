@@ -1,0 +1,8 @@
+{% assign tags = site.data.resources | map: "tags" | uniq %}
+{% for tag in tags %}
+  {% capture accordion_content %}
+    {% assign posts = site.data.resources | where: "tags",  tag %}
+    {% include blog-list.html date=false share_buttons=true %}
+  {% endcapture %}
+  {% include single-accordion.html title=tag content=accordion_content %}
+{% endfor %}

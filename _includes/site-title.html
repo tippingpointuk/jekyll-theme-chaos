@@ -1,0 +1,10 @@
+<a class="site-title" rel="author" href="{{ "/" | relative_url }}" title="{{site.title}}">
+    {% if site.logo %}
+        <img class="main-logo" src="{{ site.logo | relative_url  }}" alt="{{ site.title | escape }}"/>
+    {% else %}
+        <span>{{ site.title | escape }}</span>
+    {% endif %}
+    {% if site.logo_square %}
+        <img class="logo-square" src="{{ site.logo_square | relative_url  }}" alt="{{ site.title | escape }}"/>
+    {% endif %}
+</a>

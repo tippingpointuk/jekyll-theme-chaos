@@ -1,0 +1,87 @@
+.Chaos-Footer {
+    background-color: $text-color;
+    color: $background-color;
+    padding: 60px 0 20px 0;
+    font-size: $small-font-size;
+
+    li {
+      color:  $background-color;
+    }
+
+    a {
+        color: white;
+        text-decoration: underline;
+        font-weight: normal;
+
+        &:hover {
+            color: lighten($brand-color, 20%);
+            text-decoration: none;
+        }
+    }
+
+    .logo-line {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        .site-title {
+            flex: 1 0 auto;
+
+        }
+
+        .main-logo{
+            height: 46px;
+            max-width: 161px;
+            padding: $spacing-unit 0;
+        }
+
+        .social-links {
+            a {
+                text-decoration: none;
+
+                svg {
+                    transition: 0.2s;
+                    fill: $background-color;
+                    height: 38px;
+
+                    &:hover{ fill: $brand-color; }
+
+                    path, .st0 { fill: $text-color; }
+                }
+            }
+        }
+
+        @media screen and (max-width: 200px) {
+            .main-logo { display: none; }
+            .logo-square { display: block; }
+            span { display: none; }
+        }
+    }
+
+    nav {
+        padding: $spacing-unit*2 0 $spacing-unit*3 0;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        a { text-decoration: none;}
+        a:hover { text-decoration: underline;}
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+        }
+    }
+
+    p {
+        text-align: center;
+        font-size: $smaller-font-size;
+    }
+}

@@ -1,0 +1,41 @@
+<footer class="Chaos-Footer">
+    <div class="Chaos-Wrapper-Narrow">
+        <div class="logo-line">
+            <a class="site-title" rel="author" href="{{ "/" | relative_url }}" title="{{ site.title }}">
+                {% if site.logo_light %}
+                    <img class="main-logo" src="{{ site.logo_light | relative_url }}" alt="{{ site.title | escape }}"/>
+                {% else %}
+                    <span>{{ site.title | escape }}</span>
+                {% endif %}
+            </a>
+
+            {% include social-links.html %}
+        </div>
+        <div class="Credits">
+          {% for c in page.credits %}
+            {% if forloop.first %}
+            <h1>Credits</h1>
+            <ul>{% endif %}
+              <li><a href="{{ c.link }}">{{ c.name }}</a>: {{ c.info | markdownify }}</li>
+            {% if forloop.last %}</ul>{% endif %}
+          {% endfor %}
+        </div>
+        <nav>
+            <div class="col">
+              {% for link in site.menus.footer %}
+                <a class="page-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+              {% endfor %}
+            </div>
+        </nav>
+    </div>
+    <div class="">
+    </div>
+    <p>
+      This site was created by <a href="https://tippingpointuk.org">Tipping Point UK</a>,
+      for the Defund Climate Chaos UK Coalition.
+      {% if site.copyright_notice %}
+          {{ site.copyright_notice | liquify | markdownify }}
+      {% endif %}
+    </p>
+    <p>Last site build: {{ 'now' | date: "%D %T" }}</p>
+</footer>

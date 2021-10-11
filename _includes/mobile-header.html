@@ -1,0 +1,41 @@
+<div class="mobile">
+    <div class="edgePadding"></div>
+
+    <div class="centralPadding"></div>
+    <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+    {% if site.donate %}
+        <a class="Chaos-Button" href="{{ site.donate  | relative_url }}">Donate</a>
+    {% endif %}
+    <label class="open-menu" for="nav-trigger" title="Open menu">
+        <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+        </span>
+    </label>
+    <label class="close-menu" for="nav-trigger" title="Close menu">
+        <span class="menu-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490">
+                <path d="M386.813 0L245 141.812 103.188 0 0 103.188 141.813 245 0 386.812l103.187 103.187L245 348.187 386.813 490 490 386.812 348.187 244.999 490 103.187z"/>
+            </svg>
+        </span>
+    </label>
+
+    {% include site-title.html %}
+    <div class="edgePadding"></div>
+    <div class="mobile-drawer-container">
+        <div class="mobile-drawer">
+            <div class="mobile-nav">
+                {% for link in site.menus.header %}
+                  <a class="page-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+                {% endfor %}
+            </div>
+            <div class="padding"></div>
+            {% if site.donate %}
+                <a class="Chaos-Button" href="{{ site.donate | relative_url }}">Donate</a>
+            {% endif %}
+            {% include social-links.html %}
+        </div>
+    </div>
+    <label class="scrim" for="nav-trigger"></div>
+</div>

@@ -1,0 +1,30 @@
+---
+layout: post
+---
+{% assign start_day = page.start_date | date:  "%j" %}
+{% assign end_day = page.end_date | date: "%j" %}
+
+{% if start_day < end_day %}
+<p class="Chaos-Event-Date">
+  <time>{{ page.start_date | date: "%k:%M %A %e %B" }}</time>
+  to
+  <time>{{ page.end_date | date: "%k:%M %A %e %B" }}</time>
+</p>
+{% else %}
+<p class="Chaos-Event-Date">
+  {{ page.start_date | date: "%A %e %B" }}
+</p>
+<p class="Chaos-Event-Date">
+  <time>{{ page.start_date | date: "%k:%M" }}</time>
+  to
+  <time>{{ page.end_date | date: "%k:%M" }}</time>
+</p>
+{% endif %}
+
+{% if page.booking_link.size > 1 %}
+<div class="Chaos-Flex-Line">
+  <a href="{{ page.booking_link }}"><span class="Chaos-Button">Book</span></a>
+</div>
+{% endif %}
+
+{{ content }}

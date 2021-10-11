@@ -1,0 +1,87 @@
+.desktop {
+    background-color: $background-color;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-items: space-between;
+    align-items: center;
+    min-height: $action-bar-height-mobile;
+
+    @media screen and (min-width: $on-small) {
+        min-height: $action-bar-height;
+    }
+
+    height: 100%;
+
+    .Chaos-Button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        font-size: 15px;
+        height: 42px;
+        padding: 13px 16px;
+        box-sizing: border-box;
+    }
+
+    .withinPadding {
+        flex-basis: 40px;
+        flex-shrink: 10000;
+        min-width: 15px;
+    }
+
+    .page-link {
+        color: $text-color;
+        line-height: $base-line-height;
+        font-family: $header-font-stack;
+        font-size: $base-font-size * 1.5;
+        transition: 0.1s;
+        line-height: 1;
+        flex-shrink: 0.01;
+        &:hover {
+            text-decoration: none;
+            border-bottom: 4px solid $accent-color;
+            color: $brand-text-color-invert;
+        }
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .social-links-padding {
+        flex-basis: 0;
+        flex-shrink: 10000;
+        min-width: 0;
+        @media screen and (min-width: $on-large) {
+            & {
+                flex-basis: 40px;
+                flex-shrink: 10000;
+                min-width: 15px;
+            }
+        }
+
+    }
+
+    .social-links {
+        align-items: center;
+        justify-items: center;
+        svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 5px;
+        }
+        display: none;
+        @media screen and (min-width: $on-large) {
+            & { display: flex;}
+        }
+    }
+
+    display: none;
+    @media screen and (min-width: $on-medium) {
+        & { display: flex; }
+    }
+}

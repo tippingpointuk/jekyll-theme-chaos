@@ -1,0 +1,17 @@
+{% comment %}
+
+## This week
+
+{% assign posts_dates = site.trainings | sort: "date" | map: "date" %}
+{% assign no_posts = 0 %}
+{% assign now_week = 'now | date: "%W" %}
+{% for date in posts_dates %}
+  {% assign post_week = date | date: "%W" %}
+  {% if post_week == now_week %}
+    {% assign no_posts = no_posts | plus: 1 %}
+  {% endif  %}
+{% endfor %}
+{% assign posts = site.trainings | sort: "date" %}
+{% include blog-list.html summary=false limit=no_posts %}
+
+{% endcomment %}

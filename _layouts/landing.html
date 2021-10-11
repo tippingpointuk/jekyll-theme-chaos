@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% include head.html %}
+<body>
+    <div class="Landing-Header">
+      <svg viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+        <text class=hashtag x=10 y=70 textLength=220>#{{ page.hashtag | upcase }}</text>
+      </svg>
+    </div>
+
+    <main class="Chaos-Main">
+
+        {% if page.top_image %}
+            {% if layout.image_big %}
+                <div class="Chaos-Section Chaos-Big-Picture" style="background-image:url('{{page.top_image | relative_url}}')"></div>
+            {% else %}
+                <div class="Chaos-Section Chaos-Half-Picture" style="background-image:url('{{page.top_image | relative_url}}')"></div>
+            {% endif %}
+            {% if page.jump %}
+            <div class="Chaos-Near-Bottom">
+                <div class="Chaos-Flex-Line">
+                    <a href="#{{ page.jump.target | slugify }}"><span class="Chaos-Button">{{ page.jump.text }}</span></a>
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
+
+        {% if page.contents_links %}
+            <div class="Chaos-Section Chaos-Contents">
+                <div class="Chaos-Wrapper-Wide">
+                    <h2>{{ page.title }}</h2>
+                    <ol>
+                        {% for link in page.contents_links %}
+                        <li><a href="#{{link.a}}">{{link.title}}</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if page.top_quote %}
+            <div class="Chaos-Section Chaos-PullQuote">
+                <div class="Chaos-Wrapper-Wide">
+                    <h1>{{ page.top_quote | liquify }}</h1>
+                </div>
+            </div>
+        {% endif %}
+
+        {{ content }}
+
+        {% if page.end_quote %}
+        <div class="Chaos-Section Chaos-PullQuote">
+            <div class="Chaos-Wrapper-Wide">
+                <h1>{{ page.end_quote  | liquify }}</h1>
+                <div class="Chaos-Flex-Line">
+                    {% if site.join_us %}
+                        <a href="{{ site.join_us  | relative_url}}"><span class="Chaos-Button">Join Us</span></a>
+                    {% endif %}
+                    {% if site.donate %}
+                        <a href="{{ site.donate  | relative_url}}"><span class="Chaos-Button">Donate</span></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </main>
+
+    {% include footer.html %}
+</body>
+<script src={{ "/assets/js.js"  | relative_url  }}></script>
+</html>

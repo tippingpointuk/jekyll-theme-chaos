@@ -1,0 +1,118 @@
+
+.nav-hide {
+    top: -$action-bar-height-mobile;
+    @media screen and (min-width: $on-small) {
+        top: -$action-bar-height;
+    }
+}
+
+.nav-visible {
+    top: 0;
+}
+
+.Chaos-Header {
+    transition: top 0.2s ease-in-out;
+    box-shadow: 0 1px 10px $shadow-color;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: $brand-color;
+    text-transform: uppercase;
+    a {
+        font-weight: normal;
+    }
+
+    .edgePadding {
+        flex-basis: 40px;
+        flex-shrink: 10000;
+        flex-grow: 0;
+        min-width: 5px;
+    }
+
+    .centralPadding {
+        flex-basis: 40px;
+        flex-shrink: 10000;
+        flex-grow: 10000;
+        min-width: 20px;
+    }
+
+    .social-links {
+        a {
+            text-decoration: none;
+
+            svg {
+                transition: 0.2s;
+                fill: $brand-text-color;
+                height: 38px;
+
+                &:hover{ fill: invert($brand-text-color);
+                    path, .st0 {
+                        fill: $brand-text-color;
+                    }
+                }
+
+                path, .st0 { fill: invert($brand-text-color); }
+            }
+        }
+
+    }
+
+    .site-title {
+        font-family: $header-font-stack;
+        font-size: $base-font-size * 1.625;
+        &, &:visited { color: $text-color; }
+        transition: 0.1s;
+        &:hover {
+            text-decoration: none;
+            border-bottom: 3px solid $accent-color;
+            color: $background-color;
+        }
+
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        line-height: 1.2;
+    }
+
+    .site-title img {
+        max-height: $action-bar-height-mobile;
+
+
+        @media screen and (min-width: $on-small) {
+            max-height: $action-bar-height;
+        }
+
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    .site-title .logo-square
+    {
+        display: none;
+        max-width: $action-bar-height-mobile;
+        max-height: $action-bar-height-mobile;
+
+        @media screen and (min-width: $on-small) {
+            max-width: $action-bar-height-mobile;
+            max-height: $action-bar-height;
+        }
+    }
+
+    @media screen and (max-width: 250px) {
+        .site-title .main-logo { display: none; }
+        .site-title .logo-square { display: block; }
+        .centralPadding { min-width: 0;}
+        .site-title span { display: none; }
+    }
+    @media screen and (max-width: 140px) {
+        .site-title .logo-square { display: none; }
+    }
+
+    @import
+        "chaos/desktop-header",
+        "chaos/mobile-header"
+        ;
+}

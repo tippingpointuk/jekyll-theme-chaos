@@ -1,0 +1,17 @@
+<header class="Chaos-Header {% if page.nav_hide %}nav-hide{% else %}nav-visible{% endif  %}">
+    {%- assign default_paths = site.pages | sort: "order" | map: "path" -%}
+    {%- assign page_paths = site.header_pages | default: default_paths -%}
+
+    {% include mobile-header.html %}
+    {% include desktop-header.html %}
+
+    {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+    {% if site.header_pages %}
+        {% assign titles_size = 0 %}
+        {%- for path in page_paths -%}
+            {%- assign my_page = site.pages | where: "path", path | first -%}
+            {% assign add = my_page.title | size %}
+            {% assign titles_size = titles_size | plus: add %}
+        {% endfor %}
+    {% endif %}
+</header>
