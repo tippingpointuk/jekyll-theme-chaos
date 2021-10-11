@@ -10,10 +10,12 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://tippingpointuk.github.io/jekyll-chaos"
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|_templates|_plugins|LICENSE|README|_config\.yml)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_layouts|_includes|_sass|_templates|LICENSE|README|_config\.yml)!i) }
 
   spec.add_runtime_dependency "jekyll", "~> 4.2"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.15"
   spec.add_runtime_dependency "jekyll-liquify", "~> 0.0.2"
-  spec.add_runtime_dependency "airtable", "~> 0.0.9"
+  spec.add_runtime_dependency "jekyll-menus", "~> 0.6"
+  spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4"
+  spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.1"
 end
