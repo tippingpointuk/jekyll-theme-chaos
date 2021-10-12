@@ -1,0 +1,49 @@
+<script src="{{ '/assets/js/osdi.js' | relative_url }}" charset="utf-8"></script>
+<noscript>
+  <p>It looks like you have Javascript disabled. You won't be able to submit the form below without it.</p>
+</noscript>
+<form id="action-network-blind-post" class="Chaos-Form" action="{{ include.petition }}signatures" method="post">
+  <fieldset class="pair">
+    <div class="input text">
+      <input for="action-network-form-first-label" type="text" name="given_name" value="" id="action-network-form-first" required>
+      <label id="action-network-form-first-label">First Name</label>
+    </div>
+    <div class="input text">
+      <input for="action-network-form-last-label" type="text" name="family_name" value="" id="action-network-form-last">
+      <label id="action-network-form-last-label">Last Name</label>
+    </div>
+  </fieldset>
+  <fieldset class="pair">
+    <div class="input text">
+      <input type="email" name="email_address" id="action-network-form-email" for="action-network-form-email-label" required/>
+      <label id="action-network-form-email-label">Email Address</label>
+    </div>
+    <div class="input text">
+      <input for="action-network-form-organisation-label" type="text" name="custom[organisation]" id="action-network-form-organisation">
+      <label id="action-network-form-organisation-label">Organisation</label>
+    </div>
+  </fieldset>
+  <div class="Chaos-Flex-Line">
+    <button type="submit" id="simple_submit" value="Submit" class="Chaos-Button">Submit</button>
+  </div>
+  <div id="action-network-blind-post-success"></div>
+</form>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#action-network-blind-post').osdi({
+      done: function(data, textStatus, jqXHR) {
+        console.log('done');
+        $(':input','#action-network-blind-post')
+          .not(':button, :submit, :reset, :hidden')
+          .val('')
+          .prop('checked', false)
+          .prop('selected', false);
+        $('#action-network-blind-post-success').html('<p><strong>Thanks!</strong></p>');
+      },
+      fail: function(jqXHR, textStatus, errorThrown) {
+        console.log('fail');
+        $('#action-network-blind-post-success').html('<p>Looks like that didn\'t work!</p>');
+      },
+    });
+  });
+</script>

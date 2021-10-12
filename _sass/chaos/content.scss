@@ -106,14 +106,41 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.Chaos-Demand-List{
+  display: flex;
+  flex-wrap: wrap;
+  gap:  $spacing-unit;
+  li::before{
+    content: none;
+  }
+}
 .Chaos-Demand{
   background-color: $background-color;
   box-shadow: 0 5px 10px $shadow-color;
   padding: $spacing-unit;
   padding-bottom: $spacing-unit /2;
-  margin: $spacing-unit;
-  max-width: 280px;
-  width: 90%;
+  // margin: $spacing-unit;
+  text-align: center;
+  flex: 1 0 40%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  .type{
+    display: flex;
+    flex-direction: column;
+    &.stop{
+      color: red;
+      &:after{
+        content: '\2913';
+      }
+    }
+    &.start, &.start-to{
+      color: green;
+      &:after{
+        content: '\261F';
+      }
+    }
+  }
 }
 .Chaos-Background-Filter{
   background-color: rgba($background-color,0.5);
@@ -460,12 +487,14 @@ $border-width: $spacing-unit * 7;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: $spacing-unit;
   .Chaos-Logo-Item{
     flex: 1 0 21%;
     display: flex;
     justify-content: center;
     align-items: center;
-    img{
+
+    > a > img{
       filter: grayscale(50%);
       &.darken{
         filter: grayscale(100%);
@@ -476,7 +505,7 @@ $border-width: $spacing-unit * 7;
       // max-height: $item-width;
       width: 100%;
       transition: filter 0.5s;
-      box-shadow: 0;
+      box-shadow: none;
       &:hover{
         filter: none;
       }
