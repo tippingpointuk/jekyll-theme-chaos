@@ -231,8 +231,8 @@ $border-width: $spacing-unit * 7;
 
 .Chaos-Button {
     display: inline-block;
-    background-color: $brand-color;
-    color: $brand-text-color;
+    background-color: $accent-color;
+    color: $accent-text-color;
     padding: $spacing-unit * 0.2 $spacing-unit $spacing-unit * 0.2 $spacing-unit;
     margin: $spacing-unit 0;
     border-radius: $rounding;
@@ -243,7 +243,7 @@ $border-width: $spacing-unit * 7;
     text-transform: uppercase;
     &:hover {
         text-decoration: none;
-        background-color: $brand-color-dark;
+        background-color: $accent-color-dark;
     }
     &:visited {
         color: $accent-text-color;
