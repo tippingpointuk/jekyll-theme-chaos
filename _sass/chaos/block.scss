@@ -56,9 +56,27 @@
         color: $brand-color;
       }
       &.Chaos-Wrapper{
+
+        #can_embed_form{
+          #action_welcome_message_inner{
+            div, small{
+              color: $text-color;
+              a{
+                color: $brand-color;
+              }
+            }
+          }
+          :not(.floatlabel-wrapper):not(.can_select){
+
+            color: $brand-text-color;
+            // p,h1,h2,h3,h4,h5,h6{
+            //   color: $brand-text-color;
+            // }
+          }
+        }
         > p,> h1,> h2,> h3,> h4,> h5,> h6,> a{
           color: $brand-text-color;
-          > a{
+          a{
             color: $brand-text-color;
           }
         }
