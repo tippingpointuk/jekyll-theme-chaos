@@ -32,8 +32,11 @@
 
         {% if page.header %}
         <div
-        class="Chaos-Big-Header  {% if page.header.border_bottom.reflect %}shift{% endif %} {% if page.header.full %}full{% endif %}"
-        style="background-image: url('{{ page.header.image.link }}');background-position-x: {{ page.header.image.location }};"
+        class="Chaos-Big-Header
+        {% if page.header.border_bottom.reflect and page.header.border_bottom.image.size > 0  %}shift{% endif %}
+        {% if page.header.full %}full{% endif %}
+        {% if page.header.background_image %}background-image{% endif %}"
+        style="background-image: {% if page.header.background_image %}url('{{ page.header.background_image }}'){% else %}url('{{ page.header.image.link }}');background-position-x: {{ page.header.image.location }}{% endif %};"
         >
           <div class="Chaos-Section">
             <div class="Chaos-Wrapper-Wide">
@@ -45,7 +48,7 @@
               {% endfor %}
             </div>
           </div>
-          {% if page.header.border_bottom.image %}
+          {% if page.header.border_bottom.image.size > 0 %}
             <div class="border-bottom-container">
               <div class="border-bottom" style="background-image:url('{{ page.header.border_bottom.image | relative_url }}')"></div>
               {% if page.header.border_bottom.reflect %}

@@ -180,12 +180,29 @@ $border-width: $spacing-unit * 7;
   &.shift{
     position: relative;
     top: $border-width;
+    .Chaos-Section{
+      padding: 0;
+    }
   }
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-position: right;
+  &.background-image{
+    background: $background-color no-repeat center center;
+    background-size: cover;
+    .Chaos-Section{
+      background-color: rgba($background-color,0.9);
+    }
+    &.invert{
+        .Chaos-Section{
+          background-color: rgba($brand-color,0.9);
+        }
+    }
+  }
+  &:not(.background-image){
+    background-position: right;
+  }
   @include  header-images;
   .border-bottom{
     position: relative;
@@ -208,7 +225,7 @@ $border-width: $spacing-unit * 7;
   .Chaos-Section{
     flex-grow: 1;
     height: 100%;
-    padding: 0;
+    // padding: 0;
     // background-image: url('/assets/images/money-faucet.png');
     background-position: left;
     @include header-images;
