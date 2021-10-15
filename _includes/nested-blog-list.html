@@ -1,0 +1,13 @@
+{% assign tags = include.data | map: "tags" | uniq %}
+{% for tag in tags %}
+  {% capture accordion_content %}
+    {% assign posts = include.data | where: "tags",  tag %}
+    {% include blog-list.html date=include.date share_buttons=include.share_buttons %}
+  {% endcapture %}
+  {% if tag.size > 0 %}
+    {% assign title = tag %}
+  {% else %}
+    {% assign title = "Uncategorised" %}
+  {% endif %}
+  {% include single-accordion.html title=title content=accordion_content %}
+{% endfor %}
