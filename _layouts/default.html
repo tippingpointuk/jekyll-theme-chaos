@@ -9,6 +9,7 @@
 </div>
 {% endfor %}
 {% endcapture %}
+{% capture partners %}{%  for p in site.data.partners limit:7 %}{% if p.url %}<a href="{{p.url}}"><strong>{{ p.title }}</strong></a>{% else %}<strong>{{ p.title }}</strong>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endcapture %}
 <!DOCTYPE html>
 {% include head.html %}
 <body>
