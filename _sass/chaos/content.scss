@@ -145,19 +145,6 @@
 .Chaos-Background-Filter{
   background-color: rgba($background-color,0.5);
 }
-@mixin big-header {
-  margin-top: $spacing-unit * 3;
-  // font-size: calc(max(55px,min(min( 80pt, 15vw),10vh)));
-  font-size: 3.5em;
-  text-transform: uppercase;
-  // font-family: 'Druk Text';
-  letter-spacing: -0.02em;
-  strong,b,.bold{
-    // border-bottom-color: $brand-text-color-invert;
-    // border-bottom-width: 1em;
-    text-decoration: underline;
-  }
-}
 @mixin header-images {
   @media screen and (max-width: $content-width-wide * 1.75){
     background-size:0;
@@ -237,10 +224,12 @@ $border-width: $spacing-unit * 7;
       justify-content: space-around;
     }
   h1{
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
     strong,b,.bold{
+      text-decoration: underline;
       color: $accent-color;
     }
-    @include big-header;
   }
   text-align: center;
 }
