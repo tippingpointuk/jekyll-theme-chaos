@@ -30,6 +30,7 @@ $block-height: calc(max(min( 50vw, 60vh ), 400px));
 
 // Import partials.
 @import
+  "custom",
   "chaos/base",
   "chaos/header",
   "chaos/footer",
@@ -38,6 +39,5 @@ $block-height: calc(max(min( 50vw, 60vh ), 400px));
   "chaos/form",
   "chaos/block",
   "chaos/map",
-  "custom",
   "an-form"
 ;

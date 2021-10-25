@@ -166,7 +166,7 @@ $base-font-stack: "Aktiv Grotesk Corp",system-ui, -apple-system, "Segoe UI", Rob
 $base-font-size:   14pt !default;
 $base-font-weight: 400 !default;
 $base-line-height: 1.5 !default;
-$header-font-stack: "Druk Text Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+$header-font-stack: {% if site.heading_font %}"{{ site.heading_font }}", {% endif %}"Druk Text Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 $small-font-size:  $base-font-size * 0.875 !default;
 $smaller-font-size:  $base-font-size * 0.7 !default;
 
