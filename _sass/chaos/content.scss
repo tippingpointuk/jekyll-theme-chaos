@@ -180,6 +180,11 @@ $border-width: $spacing-unit * 7;
     background-size: cover;
     .Chaos-Section{
       background-color: rgba($background-color,0.9);
+      .Chaos-Wrapper-Wide{
+        background-color: rgba($background-color, 0.7);
+        box-shadow: 0 0 1000px $background-color;
+        border-radius: 20%;
+      }
     }
     &.invert{
         .Chaos-Section{
