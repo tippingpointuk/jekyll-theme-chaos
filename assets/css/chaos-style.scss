@@ -34,6 +34,16 @@ $accent-color-dark: darken($accent-color, 15%) !default;
 $text-color-light: lighten($text-color, 18%);
 $background-color: {{ site.background_color | default: "$white-color" }} !default;
 
+{% if site.brand_color == site.accent_color %}
+  $desktop-header-background-color: $background-color;
+  $desktop-header-text-color: $text-color;
+  $desktop-header-text-color-invert: $brand-color;
+{% else %}
+  $desktop-header-background-color: $brand-color;
+  $desktop-header-text-color: $brand-text-color;
+  $desktop-header-text-color-invert: $brand-text-color-invert;
+{% endif %}
+
 $on-tiny:          {{ site.theme_tiny | default: 250 }}px !default;
 $on-small:         {{ site.theme_small | default: 425 }}px !default;
 $on-medium:        {{ site.theme_medium | default: 850 }}px !default;
