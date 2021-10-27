@@ -1,0 +1,30 @@
+#feed{
+  .crt-feed{
+    .crt-post{
+      box-shadow: 0 0 $rounding $shadow-color;
+      background-color: $background-color;
+      border: 0;
+      .crt-post-text a{
+        color: $brand-color;
+      }
+    }
+    .crt-post-border{
+      border: 0;
+    }
+    img{
+      box-shadow: none;
+    }
+  }
+  .crt-load-more{
+    background-color: $brand-color;
+    border-radius: $rounding;
+    font-family: $header-font-stack;
+    color: $brand-text-color;
+    font-size: 1.5em;
+    padding: $spacing-unit;
+    text-transform: uppercase;
+    &:hover{
+      background-color: $brand-color-dark;
+    }
+  }
+}
