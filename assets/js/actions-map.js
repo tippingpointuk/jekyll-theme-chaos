@@ -10,6 +10,8 @@ $(document).ready(function(){
 {% assign actions = site.actions %}
 {% endif %}
 
+var now = new Date()
+
 var actionsData = {
   "events":[
   {% for a in actions %}
@@ -64,6 +66,11 @@ var markerCluster = L.markerClusterGroup({
 });
 
 for (i in actionsData["events"]){
+  startDate = new Date(actionsData["events"][i]["start_date"])
+  if (startDate < (now + (60 * 60))){
+    actionsData["events"].splice(i,1);
+    continue
+  }
   var markerLocation = actionsData["events"][i]["location"]["location"];
   var newMarker = L.marker([markerLocation["latitude"], markerLocation["longitude"]],{icon: redMarker});
   newMarker.actionData = actionsData["events"][i]
