@@ -1,7 +1,7 @@
-{% capture text %}{% if page.share.text.size > 0 %}{{page.share.text}}{% elsif include.page.summary.size > 1 %}{{ include.page.summary }}{% elsif include.page.description.size > 1 %}{{ include.page.description | strip_html | truncate_words: 25 }}{% endif %}{% endcapture %}
+{% capture text %}{% if include.page.share.text.size > 0 %}{{page.share.text}}{% elsif include.page.summary.size > 1 %}{{ include.page.summary }}{% elsif include.page.description.size > 1 %}{{ include.page.description | strip_html | truncate_words: 25 }}{% endif %}{% endcapture %}
 {% capture url %}{% unless include.page.url contains "://" %}{{ site.url }}{{ include.page.url | relative_url}}{% else %}{{ include.page.url }}{% endunless %}{% endcapture %}
 {% capture title %}{{ include.page.title }}{% endcapture %}
-{% capture whatsapp %}{% if page.share.whatsapp.size > 0 %}{{ page.share.whatsapp }}{% else %}*{{ title }}*
+{% capture whatsapp %}{% if include.page.share.whatsapp.size > 0 %}{{ include.page.share.whatsapp }}{% else %}*{{ title }}*
 
 {% if text.size > 1 %}{{ text }}
 
@@ -11,7 +11,7 @@
     <a  class="link" href="https://www.facebook.com/sharer/sharer.php?u={{ url| url_encode }}" title="Facebook">
         {% include logo-facebook %}
     </a>
-    <a  class="link" href="https://twitter.com/intent/tweet?text={% if page.share.tweet.size > 0 %}{{ page.share.tweet | url_encode }}{% else %}{{ text | url_encode }}{% endif %}&url={{ url | url_encode }}{% if site.twitter contains 'http' %}&via={{ site.twitter | url_encode }}{% endif %}" title="Twitter">
+    <a  class="link" href="https://twitter.com/intent/tweet?text={% if include.page.share.tweet.size > 0 %}{{ include.page.share.tweet | url_encode }}{% else %}{{ text | url_encode }}{% endif %}&url={{ url | url_encode }}{% if site.twitter contains 'http' %}&via={{ site.twitter | url_encode }}{% endif %}" title="Twitter">
         {% include logo-twitter %}
     </a>
     <a class="link " href="https://wa.me/?text={{ whatsapp | url_encode }}">
