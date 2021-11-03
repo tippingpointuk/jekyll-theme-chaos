@@ -1,0 +1,49 @@
+#feed{
+  background-color: $background-color;
+  .crt-feed{
+    .crt-post{
+      box-shadow: 0 0 $rounding $shadow-color;
+      background-color: $background-color;
+      border: 0;
+      .crt-post-text a{
+        color: $brand-color;
+      }
+    }
+    .crt-post-border{
+      border: 0;
+    }
+    img{
+      box-shadow: none;
+    }
+  }
+  .crt-post-max-height-read-more{
+    background: rgba(0,0,0,0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #{$background-color} 50%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, #{$background-color}));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #{$background-color} 50%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #{$background-color} 50%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #{$background-color} 50%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #{$background-color} 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=0);
+
+  }
+  .crt-load-more, .crt-post-read-more-button{
+    background-color: $brand-color;
+    border-radius: $rounding;
+    font-family: $header-font-stack;
+    color: $brand-text-color;
+
+    padding: $spacing-unit;
+    text-transform: uppercase;
+    &:hover{
+      background-color: $brand-color-dark;
+    }
+  }
+  .crt-post-read-more-button{
+    line-height: normal;
+    height: auto;
+  }
+  .crt-load-more{
+    font-size: 1.5em;
+  }
+}

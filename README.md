@@ -4,12 +4,6 @@ This theme is a development on the
 [jekyll-rebellion](https://github.com/davidgundry/jekyll-rebellion) theme,
 with lots of added stuff to suit a general day of action type site.  
 
-Welcome to your new Jekyll theme! In this directory, you'll find the files you need to be able to package up your theme into a gem. Put your layouts in `_layouts`, your includes in `_includes`, your sass files in `_sass` and any other assets in `assets`.
-
-To experiment with this code, add some sample content and run `bundle exec jekyll serve` – this directory is setup just like a Jekyll site!
-
-TODO: Delete this and the text above, and describe your gem
-
 
 ## Installation
 
@@ -35,7 +29,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here. Describe your available layouts, includes, sass and/or assets.
+This theme was designed with use of Airtable and Forestry.io as content management
+systems.  
+
+To start with an example website check out the
+[example day of action website](https://github.com/tippingpointuk/dayofactionwebsite)  
+or just deploy straight to Netlify:
+
+[ ![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg) ](https://app.netlify.com/start/deploy?repository=https://github.com/tippingpointuk/dayofactionwebsite)
+
+
+Checkout the [`jekyll-airtable-import` plugin](https://github.com/tippingpointuk/jekyll-airtable-import)
+for setting up your import.
+
+And got to [foresty.io](https://foresty.io/) and follow the steps to add that
+GIT based CMS to your site.
 
 ## Contributing
 

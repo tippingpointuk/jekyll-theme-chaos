@@ -1,8 +1,12 @@
 #can_embed_form{
+  .discussion-board{
+    display: none;
+  }
   #can_embed_form_inner{
     > *:not(form){
       display: none;
     }
+
     #action_welcome_message{
       #action_welcome_message_inner{
         border: 2px solid $brand-color;
