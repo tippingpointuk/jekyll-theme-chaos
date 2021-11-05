@@ -1,19 +1,18 @@
 ---
-layout: default
+layout: page
 ---
-
 <div class="Chaos-Section">
     <div class="Chaos-Wrapper-Wide">
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page.name }}</h1>
         <div class="Chaos-Flex-Line">
           {% include share-links.html page=page %}
         </div>
         {% if page.image %}
             <img src="{{ page.image  | relative_url}}" />
         {% endif %}
-        {% if page.authors %}{% for a in page.authors %}
-        {% include author.html author=a %}
-        {% endfor %}{% endif %}
         {{ content }}
+        <h2 id="post">Posts</h2>
+        {% assign posts = page.posts %}
+        {% include blog-list.html %}
     </div>
 </div>

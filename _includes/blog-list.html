@@ -64,7 +64,7 @@
                     {% if post.authors %}
                     <span>
                         {% for a in post.authors %}
-                            {% if a.url %}<a href='{{ "/" | join: a.url | relative_url  }}'>{{ a.name }}</a>{% else %}{{a.name}}{% endif %}{% if forloop.last == false %},{% endif %}
+                            {% if a.url %}<a href='{{ a.url | relative_url  }}'>{{ a.name }}</a>{% else %}{{a.name}}{% endif %}{% if forloop.last == false %},{% endif %}
                         {% endfor %}
                     </span>
                     {%endif%}

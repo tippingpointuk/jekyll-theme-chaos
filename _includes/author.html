@@ -1,0 +1,12 @@
+{% assign a = include.author %}
+<div class="Chaos-Author">
+  {% if a.image %}
+  <a href="{{a.url}}" class="Author-Image"><img src="{{ a.image }}" alt="Profile of {{ a.name }}" title="{{ a.name }}" ></a>
+  {% endif %}
+  <div class="Text">
+    <a class="Name" href="{{a.url}}">{{ a.name }}</a>
+    {% if a.tagline %}
+    <p>{{ a.tagline }}</p>
+    {% endif %}
+  </div>
+</div>
