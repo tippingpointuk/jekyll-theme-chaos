@@ -83,7 +83,7 @@
       }
     }
   }
-  img:not(.no-shadow){
+  img.shadow{
     box-shadow: $spacing-unit $spacing-unit $brand-color;
   }
   .Chaos-Wrapper {
