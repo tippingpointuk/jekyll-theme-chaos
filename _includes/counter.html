@@ -1,1 +1,5 @@
 <noscript>[Needs Javascript]</noscript><span class="Chaos-Counter"></span>
+<script type="text/javascript">
+  var countDownDate = new Date({{ site.counter | date: '%s' }}000).getTime();
+</script>
+<script src="{{ '/assets/js/counter.js' | relative_url }}" charset="utf-8"></script>

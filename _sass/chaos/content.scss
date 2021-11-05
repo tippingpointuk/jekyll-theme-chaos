@@ -584,3 +584,22 @@ section.card{
 .hide{
   display: none;
 }
+
+.Chaos-Author{
+  margin-top: 1em;
+  margin-bottom: 0.75em;
+  display: flex;
+  gap: $spacing-unit;
+  .Author-Image{
+    flex-basis: 17%;
+    // padding: $spacing-unit;
+    img{
+      clip-path: circle();
+    }
+  }
+  .Text{
+    *:not(.Name){
+      font-size: 0.75em;
+    }
+  }
+}
