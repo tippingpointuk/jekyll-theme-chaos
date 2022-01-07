@@ -590,14 +590,16 @@ section.card{
   margin-bottom: 0.75em;
   display: flex;
   gap: $spacing-unit;
+  align-items: center;
   .Author-Image{
-    flex-basis: 17%;
-    // padding: $spacing-unit;
+    min-width: 75px;
+    width: 30%;
+    max-width: 100px;
     img{
       clip-path: circle();
     }
   }
-  .Text{
+  .Author-Text{
     *:not(.Name){
       font-size: 0.75em;
     }
