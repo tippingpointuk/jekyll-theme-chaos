@@ -4,7 +4,8 @@
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="{{ '/assets/js/jquery.js' | relative_url }}"></script>
     {%- seo -%}
-    <link rel="stylesheet" href="{{ "/assets/css/chaos-style.css" | relative_url }}">
+    {% capture styleurl %}/assets/css/{{ page.style | default: 'chaos-style' }}.css{% endcapture %}
+    <link rel="stylesheet" href="{{ styleurl | relative_url }}">
     <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
     {%- feed_meta -%}
     {%- if jekyll.environment == 'production' and site.google_analytics -%}
