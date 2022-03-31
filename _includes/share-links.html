@@ -8,13 +8,13 @@
 {% endif %}{{ url }}{% endif %}{% endcapture %}
 
 <div class="social-links">
-    <a  class="link" href="https://www.facebook.com/sharer/sharer.php?u={{ url| url_encode }}" title="Facebook">
+    <a  target="_blank"  class="link" href="https://www.facebook.com/sharer/sharer.php?u={{ url| url_encode }}" title="Facebook">
         {% include logo-facebook %}
     </a>
-    <a  class="link" href="https://twitter.com/intent/tweet?text={% if include.page.share.tweet.size > 0 %}{{ include.page.share.tweet | url_encode }}{% else %}{{ text | url_encode }}{% endif %}&url={{ url | url_encode }}{% if site.twitter contains 'http' %}&via={{ site.twitter | url_encode }}{% endif %}" title="Twitter">
+    <a target="_blank" class="link" href="https://twitter.com/intent/tweet?text={% if include.page.share.tweet.size > 0 %}{{ include.page.share.tweet | url_encode }}{% else %}{{ text | url_encode }}{% endif %}&url={{ url | url_encode }}{% if site.twitter contains 'http' %}&via={{ site.twitter | url_encode }}{% endif %}" title="Twitter">
         {% include logo-twitter %}
     </a>
-    <a class="link " href="https://wa.me/?text={{ whatsapp | url_encode }}">
+    <a class="link "  target="_blank" href="https://wa.me/?text={{ whatsapp | url_encode }}">
       {% include logo-whatsapp.svg %}
     </a>
     <span  class="link Web-Share-Button" share_text="{{ text  | strip_html  }}" share_title="{{ title | strip_html   }}" share_url="{{ url }}">

@@ -52,6 +52,11 @@
                     <!-- <a href="{{ url   }}"><img title="{{post.title}}"  src="{{ post.image  | relative_url  }}" /></a> -->
                   </div>
                 <!-- </a> -->
+                {%  endif %}
+                {% if include.logo %}
+                <div class="thumbnail">
+                  <img title="{{post.title}}"  src="{{ post.image  | relative_url  }}" style=""/>
+                </div>
                 {% endif %}
 
                 <div class="description">

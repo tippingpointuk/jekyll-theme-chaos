@@ -100,7 +100,7 @@ function updateActionsList(actions){
     var startTime = new Intl.DateTimeFormat('en-GB', options).format(start)
     var options = { weekday: 'short', month: 'short', day: 'numeric',timeZone: "UTC"  }
     var startDate = new Intl.DateTimeFormat('en-GB', options).format(start)
-    actionslisthtml = actionslisthtml.concat(`
+    actionslisthtml = actionslisthtml.concat(/*html*/`
       <div class="Chaos-Blog-Item Action"  id="${ id }">
         <div class="top ">
           <div class="description">
