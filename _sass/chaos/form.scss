@@ -75,8 +75,12 @@ input[type="submit"], button{
     &.pair{
       @media screen and (min-width: $content-width-narrow) {
         display: flex;
+        align-items: flex-end;
         .input {
           max-width: 50%;
+        }
+        button.input {
+          margin: $spacing-unit*1.5 $spacing-unit * 1.4;
         }
 
       }
