@@ -1,11 +1,24 @@
-#can_embed_form{
-  .discussion-board{
-    display: none;
-  }
-  #can_embed_form_inner{
-    > *:not(form){
+.can_embed.form, .can_embed.event{
+  #can_embed_form{
+    .discussion-board{
       display: none;
     }
+    #can_embed_form_inner{
+      > *:not(form):not(#can_letter_one_col){
+        display: none;
+      }
+    li{
+      &::before{
+        content: none;
+      }
+    }
+    > .clearfix, > .thank-you-message {
+      display: none;
+    }
+  }
+}
+#can_embed_form{
+  #can_embed_form_inner{
 
     #action_welcome_message{
       #action_welcome_message_inner{
@@ -63,7 +76,4 @@
         content: none;
       }
     }
-  > .clearfix, > .thank-you-message {
-    display: none;
-  }
 }
