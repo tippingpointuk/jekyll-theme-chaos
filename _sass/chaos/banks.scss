@@ -1,0 +1,143 @@
+@for $count from 1 to 5 {
+    .Red-#{$count}{
+        background-color: darken(#DD0000, ($count - 1) * (50 / 5));
+        color: $white-color;
+        h1, h2, h3, h4, h5, h6{
+            color: $white-color;
+        }
+    }
+}
+.Banks-Container-Dark{
+    background-color: #f4e2d3;
+}
+
+.Banks-Box {
+    margin: $spacing-unit * 5 auto;
+    
+    border-radius: $rounding;
+}
+
+.Banks-Content-Section{
+    max-width: $content-width-wide * 1.7;
+    margin: $spacing-unit * 5 auto;
+}
+
+.Bank-Header {
+    min-height: 60vh;
+    background: $background-color no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    .Bank-Header-Overlay {
+        flex-grow: 1;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($background-color, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10 * $spacing-unit;
+    }
+    .Bank-Header-Content{
+        max-width: $content-width-wide;
+        text-align: center;
+    }
+}
+.Banks-Main {
+    position: relative;
+    top: -10 * $spacing-unit;
+    margin: 0;
+}
+.Banks-Container{
+    margin-bottom: $spacing-unit * 17;
+    margin-left: auto;
+    margin-right: auto;
+}
+.Banks-Blurb{
+    .Banks-Blurb-Box {
+        display: flex;
+        flex-basis: 50%;
+        text-align: left;
+        padding: $spacing-unit * 4;
+    }
+    .Banks-Blurb-Content {
+        h1 {
+            font-size: 27pt;
+        }
+    }
+}
+
+// Take Action blocks
+
+.Banks-Action{
+    display: grid;
+    > * {
+        padding: $spacing-unit;
+    }
+    .Stats {
+        font-family: monospace;
+        text-transform: uppercase;
+    }
+    .Banks-Action-Impact{
+        grid-row: 1;
+        grid-column-start: 1;
+        border-bottom: 1px $background-color solid;
+    }
+    .Banks-Action-Header{
+        grid-row: 2;
+        grid-column-start: 1;
+    }
+    .Banks-Action-Time{
+        grid-row: 1;
+        grid-column-start: 3;
+        grid-column-end: 4;
+        border-bottom: 1px $background-color solid;
+        border-left: 1px rgba($background-color, 0.7) solid;
+    }
+    .Banks-Action-Click-Counter{
+        grid-row: 1;
+        grid-column-start: 4;
+        grid-column-end: 5;
+        border-bottom: 1px $background-color solid;
+        border-left: 1px rgba($background-color, 0.7) solid;
+    }
+    .Banks-Action-Blurb {
+        grid-row: 2;
+        grid-column-start: 3;
+        grid-column-end: 5;
+    }
+}
+
+// Facts
+
+.Banks-Facts-Headline {
+    display: flex;
+    flex-basis: 25%;
+    gap: $spacing-unit * 3;
+    .Banks-Facts-Heading-Fact {
+        padding: $spacing-unit * 3;
+        h1 {
+            margin-top: 0;
+        }
+    }
+}
+.Banks-Facts-Content {
+    display: flex;
+    flex-basis: 50%;
+    gap: $spacing-unit;
+    .Banks-Facts-Blockquote{
+        min-width: 33%;
+        blockquote {
+            background-color: $background-color;
+            padding: $spacing-unit * 1.5;
+            padding-left: $spacing-unit * 2;
+        }
+    }
+    .Banks-Facts-Content-Content{
+        flex-grow: 1;
+        > *:first-child{
+            margin-top: 0;
+        }
+    }
+}

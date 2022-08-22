@@ -8,9 +8,10 @@ $shadow-color:     #222;
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
+$red-color: #DD0000 !default;
 
 
-// $text-color:  {{ site.brand_color | default: "#DD0000" }} !default;
+// $text-color:  {{ site.brand_color | default: "$red-color" }} !default;
 $text-color:       $black-color !default;
 
 {% if site.invert_brand_text %}
@@ -27,9 +28,9 @@ $text-color:       $black-color !default;
     $accent-text-color: $black-color !default;
 {% endif %}
 
-$brand-color:       {{ site.brand_color | default: "#DD0000" }} !default;
+$brand-color:       {{ site.brand_color | default: "$red-color" }} !default;
 $brand-color-dark: darken($brand-color, 15%) !default;
-$accent-color:      {{ site.accent_color | default: "#DD0000" }} !default;
+$accent-color:      {{ site.accent_color | default: "$red-color" }} !default;
 $accent-color-dark: darken($accent-color, 15%) !default;
 $text-color-light: lighten($text-color, 18%);
 $background-color: {{ site.background_color | default: "$white-color" }} !default;
