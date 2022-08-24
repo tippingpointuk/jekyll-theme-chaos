@@ -76,3 +76,18 @@ $("a").on("click", function(){
   console.log(this)
   openAccordion(this.hash);
 });
+
+// Copy Buttons
+window.addEventListener("load", function(){
+  var copyButtons = document.getElementsByClassName('Copy-Button');
+  for (var i = 0; i < copyButtons.length;i++){
+    copyButtons[i].addEventListener('click', function(){
+      var copyParent = this.parentNode;
+      var copyElement = copyParent.getElementsByClassName('Copy-Me')[0];
+      navigator.clipboard.writeText(copyElement.textContent.trim());
+      copyParent.classList.add('copied')
+    });
+  }
+});
+
+
