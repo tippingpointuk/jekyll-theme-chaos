@@ -3,9 +3,9 @@
 {% capture title %}{{ include.page.title }}{% endcapture %}
 {% capture whatsapp %}{% if include.page.share.whatsapp.size > 0 %}{{ include.page.share.whatsapp }}{% else %}*{{ title }}*
 
-{% if text.size > 1 %}{{ text }}
+{% if text.size > 1 %}{{ text }}{% endif %}{% endif %}
 
-{% endif %}{{ url }}{% endif %}{% endcapture %}
+{{ url }}{% endcapture %}
 
 <div class="social-links">
     <a  target="_blank"  class="link" href="https://www.facebook.com/sharer/sharer.php?u={{ url| url_encode }}" title="Facebook">
