@@ -172,9 +172,15 @@ a {
     color: $brand-color;
     text-decoration: none;
     font-weight: bold;
+    svg {
+        fill: $brand-color;
+    }
 
     &:visited {
         color: darken($brand-color, 15%);
+        svg {
+            fill: darken($brand-color, 15%);
+        }
     }
 
     &:hover {
