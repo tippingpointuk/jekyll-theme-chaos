@@ -44,8 +44,6 @@ function hasScrolled()
 }
 // Share button
 function sharePage(e){
-  console.log(e)
-  console.log(e.currentTarget.attributes.share_title.value)
   navigator = window.navigator;
   navigator.share({
     title: e.currentTarget.attributes.share_title.value,
@@ -60,7 +58,6 @@ $('.Web-Share-Button').on('click',sharePage)
 function openAccordion(target_id){
   var target = $(target_id);
   var checkbox = target.find("input.Chaos-Accordion-Toggle")
-  console.log(checkbox)
   checkbox.prop("checked",true);
 }
 // Linked externally
@@ -73,7 +70,6 @@ $( document ).ready(function(){
 });
 // Linked internally
 $("a").on("click", function(){
-  console.log(this)
   openAccordion(this.hash);
 });
 

@@ -56,10 +56,17 @@ body{
         padding-bottom: 10 * $spacing-unit;
     }
     .Bank-Header-Content{
+        margin-top: $action-bar-height;
+        @media screen and (max-width: $content-width-narrow) {
+            margin-top: $action-bar-height-mobile;
+        }
         max-width: $content-width-wide;
         text-align: center;
         > *:first-child{
             margin-top: 0;
+        }
+        .Bank-Header-Subtitle {
+            font-family: 'Druk Text';
         }
     }
 }
@@ -136,6 +143,12 @@ body{
     .Stats {
         font-family: monospace;
         text-transform: uppercase;
+    }
+    .Banks-Action-Header{
+        h3 {
+            font-family: 'Druk Text';
+        }
+        
     }
     @media screen and (min-width: $content-width-wide) {
         // For BIG screens
@@ -225,6 +238,7 @@ body{
             display: inline-block;
         }
     }
+    
     .Banks-Action-Blurb {
         .Banks-Action-Blurb-Buttons{
             .Chaos-Button {
