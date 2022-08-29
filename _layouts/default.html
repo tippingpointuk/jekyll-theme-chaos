@@ -1,5 +1,6 @@
 {% capture odd_classes %}odd {% if page.invert == "odd" %}invert{% endif %}{% endcapture %}
 {% capture even_classes %}even {% if page.invert == "even" %}invert{% endif %}{% endcapture %}
+{% capture source_code %}dccuk_website_{% if page.url != '/' %}{{ page.url | slugify }}{% endif %}{% endcapture %}
 {% capture blocks %}
 {% for block in page.blocks %}
 <div
