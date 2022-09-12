@@ -12,7 +12,9 @@
 
 .Chaos-Header {
     transition: top 0.2s ease-in-out;
-    box-shadow: 0 1px 10px $shadow-color;
+    &:not(.No-Shadow){
+        box-shadow: 0 1px 10px $shadow-color;
+    }
     position: fixed;
     left: 0;
     right: 0;

@@ -1,4 +1,4 @@
-<header class="Chaos-Header {% if page.hide_nav %}nav-hide{% else %}nav-visible{% endif  %}">
+<header class="Chaos-Header {% if page.hide_nav %}nav-hide{% else %}nav-visible{% endif  %} {% if include.no_shadow %}No-Shadow{% endif %}">
     {%- assign default_paths = site.pages | sort: "order" | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
 

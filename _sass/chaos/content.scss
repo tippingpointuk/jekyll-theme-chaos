@@ -605,3 +605,20 @@ section.card{
     }
   }
 }
+
+@media screen and (max-width: $content-width-narrow) {
+  span.Mobile-Show {
+    display: inline;  
+  }
+  span.Desktop-Show {
+    display: none;
+  }
+}
+@media screen and (min-width: $content-width-narrow) {
+  span.Mobile-Show {
+    display: none;
+  }
+  span.Desktop-Show {
+    display: inline;
+  }
+}
