@@ -6,6 +6,7 @@ button - short text - the button text for sumitting the form
 thank_you - text - thank you message for when form submitted
 error - text - appears on form error
 {% endcomment %}
+{% assign button = include.button | default: button | default: "Join&nbsp;Us" %}
 <noscript>
   <p>It looks like you have Javascript disabled. You won't be able to submit the form below without it.</p>
 </noscript>
@@ -19,7 +20,7 @@ error - text - appears on form error
         <input type="email" name="email_address" id="action-network-form-email" for="action-network-form-email-label" required/>
         <label id="action-network-form-email-label">Email Address</label>
       </div>
-      <button type="submit" id="simple_submit" value="Submit" class="Chaos-Button input">{{ include.button | default: "Join&nbsp;Us" }}</button>
+      <button type="submit" id="simple_submit" value="Submit" class="Chaos-Button input">{{ button }}</button>
       <!-- <div class="input">
 
         <label for="simple_submit"></label>

@@ -1,0 +1,30 @@
+<form id="action-network-blind-post" class="Chaos-Form" action="{{ include.endpoint }}" method="post">
+    {% assign lines = include.lines | split: "." %}
+    {% for line in lines %}
+    {% include an-form/line.html fields="line" %}
+    {% endfor %}
+</form>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#action-network-blind-post').osdi({
+      done: function(data, textStatus, jqXHR) {
+        console.log('done');
+        $(':input','#action-network-blind-post')
+          .not(':button, :submit, :reset, :hidden')
+          .val('')
+          .prop('checked', false)
+          .prop('selected', false);
+        $('#action-network-blind-post-success').html('{{ include.thank_you | default: "**Thanks!**" | markdownify | liquify | strip_newlines }}');
+        {% if include.jump.size > 0 %}
+        setTimeout(function(){
+            location.href = "#{{ include.jump }}";
+        },500);
+        {% endif %}
+      },
+      fail: function(jqXHR, textStatus, errorThrown) {
+        console.log('fail');
+        $('#action-network-blind-post-success').html(decodeURIComponent('{{ include.error | default: "Looks like that didn\'t work!" | markdownify | liquify | strip_newlines | url_encode }}'));
+      },
+    });
+  });
+</script>

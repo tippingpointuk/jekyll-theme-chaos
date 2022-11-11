@@ -1,0 +1,6 @@
+<fieldset class="pair">
+    {% assign fields = include.fields | split: "," %}
+    {% for field in fields %}
+        {% include an-form/{{ field }}.html %}
+    {% endfor %}
+</fieldset>
