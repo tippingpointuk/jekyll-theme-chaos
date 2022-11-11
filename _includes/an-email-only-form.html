@@ -1,3 +1,11 @@
+{% comment %}
+Parameters
+----
+jump - anchor - a heading/achor to link down to after
+button - short text - the button text for sumitting the form
+thank_you - text - thank you message for when form submitted
+error - text - appears on form error
+{% endcomment %}
 <noscript>
   <p>It looks like you have Javascript disabled. You won't be able to submit the form below without it.</p>
 </noscript>
@@ -11,7 +19,7 @@
         <input type="email" name="email_address" id="action-network-form-email" for="action-network-form-email-label" required/>
         <label id="action-network-form-email-label">Email Address</label>
       </div>
-      <button type="submit" id="simple_submit" value="Submit" class="Chaos-Button input">Join&nbsp;Us</button>
+      <button type="submit" id="simple_submit" value="Submit" class="Chaos-Button input">{{ include.button | default: "Join&nbsp;Us" }}</button>
       <!-- <div class="input">
 
         <label for="simple_submit"></label>
@@ -29,7 +37,7 @@
           .val('')
           .prop('checked', false)
           .prop('selected', false);
-        $('#action-network-blind-post-success').html('<p><strong>Thanks!</strong></p>');
+        $('#action-network-blind-post-success').html('{{ include.thank_you | default: "**Thanks!**" | markdownify | liquify | strip_newlines }}');
         {% if include.jump.size > 0 %}
         setTimeout(function(){
             location.href = "#{{ include.jump }}";
@@ -38,7 +46,7 @@
       },
       fail: function(jqXHR, textStatus, errorThrown) {
         console.log('fail');
-        $('#action-network-blind-post-success').html('<p>Looks like that didn\'t work!</p>');
+        $('#action-network-blind-post-success').html(decodeURIComponent('{{ include.error | default: "Looks like that didn\'t work!" | markdownify | liquify | strip_newlines | url_encode }}'));
       },
     });
   });

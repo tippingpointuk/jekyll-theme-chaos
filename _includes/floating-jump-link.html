@@ -1,0 +1,29 @@
+<div class="Chaos-Flex-Line Chaos-Jump-Button" id="{{ include.jump }}-jump">
+    <a href="#{{ include.jump }}"><span class="Chaos-Button">{{ include.text }}</span></a>
+</div>
+<span class="Chaos-Jump-Button-Hide" id="{{ include.jump }}-jump-hide"></span>
+<style>
+    .Chaos-Jump-Button{
+        display: flex;
+        position: fixed;
+        bottom: 25px;
+        width: 100vw;
+        left: 0;
+        z-index: 0;
+    }
+    .Chaos-Jump-Button.hide {
+        z-index: -1;
+    }
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+        let jumpButton = document.getElementById('{{ include.jump }}-jump');
+        let jumpLinkHide = document.getElementById('{{ include.jump }}-jump-hide');
+        let offset = jumpLinkHide.getBoundingClientRect().top - jumpButton.getBoundingClientRect().top;
+        if (offset < 0){
+            jumpButton.classList.add('hide');
+        }else{
+            jumpButton.classList.remove('hide');
+        }
+    });
+</script>
