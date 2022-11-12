@@ -1,5 +1,5 @@
-<fieldset class="pair">
-    {% assign fields = include.fields | split: "," %}
+{% assign fields = include.fields | split: "," %}
+<fieldset class="{% if fields.size > 1 %}pair{% endif %}">
     {% for field in fields %}
         {% include an-form/{{ field }}.html %}
     {% endfor %}
