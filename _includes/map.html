@@ -1,5 +1,5 @@
-{% assign lat = page.map.lat | default: site.map.lat %}
-{% assign lng = page.map.lng | default: site.map.lng %}
+{% assign lat = include.map.lat | default: page.map.lat | default: site.map.lat %}
+{% assign lng = include.map.lng | default: page.map.lng | default: site.map.lng %}
 {% capture params %}
 {
   "zoom" : 17,
