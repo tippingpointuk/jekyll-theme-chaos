@@ -1,6 +1,13 @@
 {% assign fields = include.fields | split: "," %}
 <fieldset class="{% if fields.size > 1 %}pair{% endif %}">
     {% for field in fields %}
-        {% include an-form/{{ field }}.html %}
+        {% assign custom_split = field | split: "--" %}
+        {% assign custom_split_first = custom_split | first %}
+        {% assign custom_split_last = custom_split | last %}
+        {% if custom_split_first == "custom" %}
+            {% include an-form/custom.html field = custom_split_last %}
+        {% else %}
+            {% include an-form/{{ field }}.html %}
+        {% endif %}
     {% endfor %}
 </fieldset>

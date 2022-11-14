@@ -6,7 +6,7 @@ description: |-
 
   I am telling you, it is really imporant.
 url:
-theme: jekyll-chaos
+theme: jekyll-theme-chaos
 permalink: pretty
 
 background_color: "#FFF0E3"

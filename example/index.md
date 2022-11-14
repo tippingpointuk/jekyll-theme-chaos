@@ -10,6 +10,8 @@ header:
   text: |-
     #### Countdown: {% include counter.html %}
 
+    {% include an-form/base.html lines="first-name,email,custom--test.postal-code,country.submit." %}
+
     # Do the thing. Now.
 
     A summary text about the day of action. What why when etc..

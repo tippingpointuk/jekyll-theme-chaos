@@ -173,6 +173,17 @@
                     font-family: $header-font-stack;
                     font-size: $base-font-size * 1.5;
 
+                    &.child::before{
+                        content: "\276F";
+                        font-size: 0.65em;
+                        position: relative;
+                        top: -0.35em;
+                        text-align: center;
+                        transition: all .35s;
+                        color: $brand-text-color;
+                        padding-right: $spacing-unit;
+                    }
+
                     &:hover {
                         text-decoration: none;
                         border-bottom: 1px solid $accent-color;
