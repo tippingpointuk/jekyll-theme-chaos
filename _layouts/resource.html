@@ -1,0 +1,38 @@
+---
+layout: page
+---
+{% capture content_link %}{{ page.motion | default: page.link | default: page.video }}{% endcapture %}
+{% capture custom_content %}
+{% if content_link contains "docs.google" %}
+    {{ content_link | google_doc }}
+{% else %}
+    <a href="{{ page.link }}">Read content</a>
+{% endif %}
+{% endcapture %}
+
+{% capture g_doc_buttons %}
+<div class="Chaos-Flex-Line">
+    <a href="https://docs.google.com/document/d/{{ page.google_doc_id }}/export?format=pdf"><span class="Chaos-Button">PDF</span></a>
+    <a href="https://docs.google.com/document/d/{{ page.google_doc_id }}/copy"  target="_blank"><span class="Chaos-Button">Copy</span></a>
+</div>
+{% endcapture %}
+
+{% capture image %}
+{%if page.image %}
+<img src="{{ page.image }}" alt="">
+{% endif %}
+{% endcapture %}
+
+{% capture share_buttons %}
+<div class="Chaos-Flex-Line">{% include share-links.html page=page %}</div>
+{% endcapture %}
+
+{% capture video %}{% if page.you_tube_id %}<iframe width="100%" height="315" src="https://www.youtube.com/embed/{{ page.you_tube_id }}" title="{{ page.title }} YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>{% endif %}{% endcapture %}
+
+{% capture motion %}{{ page.motion | google_doc }}{% endcapture %}
+
+{% assign template_name = page.template | downcase %}
+
+{% assign template = site.templates | find: "slug", template_name %}
+
+{{ template.template | markdownify | liquify }}

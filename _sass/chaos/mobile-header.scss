@@ -142,6 +142,8 @@
             position: relative;
             padding-top: $action-bar-height-mobile;
 
+            overflow: scroll;
+
             @media screen and (min-width: $on-small) {
                 padding-top: $action-bar-height;
             }
@@ -191,6 +193,10 @@
                     }
                     padding: 0.5rem;
                     padding-left: 1.5rem;
+                }
+                .page-link-children {
+                    display: flex;
+                    flex-direction: column;
                 }
 
                 .page-link:hover + .page-link {

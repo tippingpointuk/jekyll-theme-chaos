@@ -17,7 +17,10 @@
     {% capture next_month %}{{ post.previous[date_field] | date: "%B" }}{% endcapture %}
 
     {% assign post_id = post.title | slugify  %}
-    {% if post.url  %}
+    {% if post.external_link %}
+      {% assign url = post.external_link  %}
+      {% assign is_internal = false %}
+    {% elsif post.url  %}
       {% assign url = post.url | relative_url  %}
       {% assign first_url_letter = post.url | slice: 0 %}
       {% if post.url contains site.url or first_url_letter == "/"  %}

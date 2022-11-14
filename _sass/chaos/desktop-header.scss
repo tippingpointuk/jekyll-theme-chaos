@@ -96,6 +96,16 @@
         box-shadow: 0 1px 10px $shadow-color;
         top: 100%;
         padding: $spacing-unit;
+        z-index: -1;
+
+        .page-link {
+            font-size: 0.8em;
+            display: block;
+            &:not(:first-child){
+                padding-top: $spacing-unit;
+            }
+        }
+        
     }
 
     .social-links-padding {
