@@ -1,8 +1,11 @@
 <div markdown="0">
+  {% assign now = 'now' | date: "%s" %}
   {% assign limit = include.limit | default: events.size %}
   {% assign date_field = include.date_field | default: 'date' %}
   {% assign last_month = nil %}
 {% for post in events limit:limit  %}
+    {% assign event_unix = post[date_field] | date: "%s" %}
+    {% if event_unix < now %}{% continue %}{% endif %}
     {% assign this_month = post[date_field] | date: "%B" %}
     {% assign previous_index = forloop.index0 | minus: 1 %}
 
