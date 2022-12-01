@@ -4,34 +4,18 @@
 {% assign an_form_count = 0 %}
 {% endif %}
 {% assign button = include.button | default: "Join us" %}
-<form id="action-network-blind-post-{{ an_form_count }}" class="Chaos-Form" action="{{ include.endpoint }}" method="post">
+<form
+  id="action-network-blind-post-{{ an_form_count }}"
+  class="Chaos-Form Action-Network-Form"
+  action="{{ include.endpoint }}"
+  method="post"
+  action-network-tags="{{ include.add_tags }}"
+  action-network-remove-tags="{{ include.remove_tags }}"
+  >
     {% assign lines = include.lines | split: "." %}
     {% for line in lines %}
     {% include an-form/line.html fields=line %}
     {% endfor %}
-    <div id="action-network-blind-post-{{ an_form_count }}-success"></div>
+    <div id="action-network-blind-post-{{ an_form_count }}-success" class="Action-Network-Form-Sucess"></div>
+    <div id="action-network-blind-post-{{ an_form_count }}-fail" class="Action-Network-Form-Fail"></div>
 </form>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#action-network-blind-post-{{ an_form_count }}').osdi({
-      done: function(data, textStatus, jqXHR) {
-        console.log('done');
-        $(':input','#action-network-blind-post-{{ an_form_count }}')
-          .not(':button, :submit, :reset, :hidden')
-          .val('')
-          .prop('checked', false)
-          .prop('selected', false);
-        $('#action-network-blind-post-{{ an_form_count }}-success').html('{{ include.thank_you | default: "**Thanks!**" | markdownify | liquify | strip_newlines }}');
-        {% if include.jump.size > 0 %}
-        setTimeout(function(){
-            location.href = "#{{ include.jump }}";
-        },500);
-        {% endif %}
-      },
-      fail: function(jqXHR, textStatus, errorThrown) {
-        console.log('fail');
-        $('#action-network-blind-post-{{ an_form_count }}-success').html(decodeURIComponent('{{ include.error | default: "Looks like that didn\'t work!" | markdownify | liquify | strip_newlines | url_encode }}'));
-      },
-    });
-  });
-</script>

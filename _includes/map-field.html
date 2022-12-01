@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+<script type="text/javascript" src="/assets/js/jquery.js"></script><script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<div class="map-field-container">
+    <input type="text" name="{{ include.field_name | default: 'map' }}" id="{{ include.field_id | default: 'map-field-input' }}">
+    <div id="{{ include.map_id | default: 'field-map' }}" class="Map-Feild"></div>
+</div>
+<style>
+    #{{ include.map_id | default: 'field-map' }}{
+        width: 100%;
+        height: 50vh;
+        max-height: 600px;
+    }
+    #{{ include.field_id | default: 'map-field-input' }}{
+        display: none;
+    }
+</style>
+<script>
+    var redMarker = new L.Icon({
+        iconUrl: '/assets/marker-icon-red.png',
+        shadowUrl: '/assets/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var pickedPoint = L.marker([0,0], {icon:redMarker});
+
+    var fieldMap = L.map("{{ include.map_id | default: 'field-map' }}",{
+                    center: [55.0006601,-2.7039512],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(fieldMap);
+
+    var mapFieldInput = document.getElementById("{{ include.field_id | default: 'map-field-input' }}");
+
+    fieldMap.on('click', function (e){
+        pickedPoint.setLatLng(e.latlng);
+        pickedPoint.addTo(fieldMap);
+        mapFieldInput.value = e.latlng.lat + "," + e.latlng.lng;
+    })
+</script>
