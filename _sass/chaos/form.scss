@@ -53,7 +53,7 @@ input[type="submit"], button{
     padding: $spacing-unit;
     border-radius: $rounding;
   }
-  input[type="email"], input[type="text"], input[type="tel"], textarea{
+  input[type="email"], input[type="text"], input[type="tel"], textarea, input[type="datetime-local"]{
     border-width: 2px;
     padding: $spacing-unit;
     border-radius: $rounding;
@@ -96,5 +96,14 @@ input[type="submit"], button{
   }
   .form-submit-message{
     display: none;
+  }
+
+  .Results-Box{
+    &.Hide {
+      display: none;
+    }
+    &.Show {
+      display: block;
+    }
   }
 }

@@ -9,9 +9,7 @@ function actionNetworkFormSubmit(event){
   event.preventDefault()
   const formInstance = event.target;
   const formParent = formInstance.parentNode;
-  console.log(formParent)
   const sucessBox = formParent.getElementsByClassName("Action-Network-Form-Sucess")[0];
-  console.log(sucessBox)
   const errorBox = formParent.getElementsByClassName("Action-Network-Form-Fail")[0];
   const formData = new FormData(formInstance); 
 
@@ -38,10 +36,12 @@ function actionNetworkFormSubmit(event){
           // Clear form
          formInstance.reset()
           // success message
-         sucessBox.style.display = "block";
+         sucessBox.classList.add('Show');
+         errorBox.classList.add('Hide');
         
       }else{
-        errorBox.style.display = "block";
+        sucessBox.classList.add('Hide');
+        errorBox.classList.add('Show');
       }
   };
 

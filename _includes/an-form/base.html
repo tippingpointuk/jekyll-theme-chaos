@@ -16,6 +16,10 @@
     {% for line in lines %}
     {% include an-form/line.html fields=line %}
     {% endfor %}
-    <div id="action-network-blind-post-{{ an_form_count }}-success" class="Action-Network-Form-Sucess"></div>
-    <div id="action-network-blind-post-{{ an_form_count }}-fail" class="Action-Network-Form-Fail"></div>
+    <div id="action-network-blind-post-{{ an_form_count }}-success" class="Action-Network-Form-Sucess Results-Box Hide">
+      {{ include.thank_you | default: "Thanks!" }}
+    </div>
+    <div id="action-network-blind-post-{{ an_form_count }}-fail" class="Action-Network-Form-Fail Results-Box Hide">
+      {{ include.error_message | default: "There was an error submitting the form, could you try again? Let us know if it keeps failing" }}
+    </div>
 </form>
