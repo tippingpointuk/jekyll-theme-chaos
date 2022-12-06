@@ -2,7 +2,7 @@
     <div class="edgePadding"></div>
     {% include site-title.html %}
     <div class="centralPadding"></div>
-    {% for link in site.menus.header %}
+    {% for link in menu_data %}
         <div class="page-link-parent {% if link.children %}has-children{% endif %}">
             <a class="page-link {% if link.children %}has-children{% endif %}" href="{{ link.url }}" {% if link.url contains 'https' %}target="_blank"{% endif %}>{{ link.title | escape }}</a>
             {% if link.children %}

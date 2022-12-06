@@ -2,6 +2,9 @@
     {%- assign default_paths = site.pages | sort: "order" | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
 
+    {% assign page_menu = page.custom_menu | default: "header" %}
+    {% assign menu_data = site.menus[page_menu] %}
+
     {% include mobile-header.html %}
     {% include desktop-header.html %}
 
