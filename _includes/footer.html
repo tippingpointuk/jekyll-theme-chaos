@@ -22,7 +22,8 @@
         </div>
         <nav>
             <div class="col">
-              {% for link in site.menus.footer %}
+              {% assign footer_menu = site.data.menus.menus | find: "type", "footer" %}
+              {% for link in footer_menu.items %}
                 <a class="page-link" href="{{ link.url }}">{{ link.title | escape }}</a>
               {% endfor %}
             </div>
